@@ -34,15 +34,18 @@ public class PlayerRightClicksWithItemProcedure extends ExtraenchantsModElements
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
+		double enchantmentPower = 0;
+		enchantmentPower = (double) ((EnchantmentHelper.getEnchantmentLevel(ButterHoeEnchantment.enchantment,
+				((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY))) * 2);
 		if (((EnchantmentHelper.getEnchantmentLevel(ButterHoeEnchantment.enchantment,
-				((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY))) >= 0)) {
+				/* @ItemStack */((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY)) != 0))) {
 			if (entity instanceof PlayerEntity)
 				((PlayerEntity) entity).getCooldownTracker().setCooldown(
 						(((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY)).getItem(), (int) 300);
 			if (entity instanceof LivingEntity)
-				((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.REGENERATION, (int) 100, (int) 2));
+				((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.REGENERATION, (int) 100, (int) (enchantmentPower)));
 			if (entity instanceof LivingEntity)
-				((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.SATURATION, (int) 100, (int) 2));
+				((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.SATURATION, (int) 20, (int) 1));
 			{
 				ItemStack _ist = ((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY);
 				if (_ist.attemptDamageItem((int) 2, new Random(), null)) {

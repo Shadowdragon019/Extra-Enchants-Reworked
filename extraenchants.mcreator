@@ -19,7 +19,16 @@
       "ids": {},
       "registry_name": "player_tik",
       "metadata": {
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       }
     },
     {
@@ -50,12 +59,22 @@
       "metadata": {
         "dependencies": []
       }
+    },
+    {
+      "name": "CurseOfInsomnia",
+      "type": "enchantment",
+      "sortid": 5,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "curse_of_insomnia"
     }
   ],
   "variable_elements": [],
   "sound_elements": [],
   "language_map": {
     "en_us": {
+      "enchantment.extraenchants.curse_of_insomnia": "Curse Of Insomnia",
       "enchantment.extraenchants.butter_hoe": "Butter Hoe"
     }
   },
