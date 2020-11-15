@@ -1,14 +1,67 @@
 {
   "id_map": {},
-  "mod_elements": [],
+  "mod_elements": [
+    {
+      "name": "ButterHoe",
+      "type": "enchantment",
+      "sortid": 1,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "butter_hoe"
+    },
+    {
+      "name": "PlayerTik",
+      "type": "procedure",
+      "sortid": 2,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "player_tik",
+      "metadata": {
+        "dependencies": []
+      }
+    },
+    {
+      "name": "PlayerRightClicksWithItem",
+      "type": "procedure",
+      "sortid": 3,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "player_right_clicks_with_item",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BlockBreaks",
+      "type": "procedure",
+      "sortid": 4,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "block_breaks",
+      "metadata": {
+        "dependencies": []
+      }
+    }
+  ],
   "variable_elements": [],
   "sound_elements": [],
   "language_map": {
-    "en_us": {}
+    "en_us": {
+      "enchantment.extraenchants.butter_hoe": "Butter Hoe"
+    }
   },
   "workspaceSettings": {
     "modid": "extraenchants",
-    "modName": "ExtraEnchants (Reworked)",
+    "modName": "Extra Enchants (Reworked)",
     "version": "1.0.0",
     "author": "Oskar W. Heineck, MCreator",
     "websiteURL": "https://mcreator.net",
@@ -19,8 +72,9 @@
     "dependants": [],
     "mcreatorDependencies": [],
     "currentGenerator": "forge-1.15.2",
+    "credits": "Created using mod maker MCreator - https://mcreator.net/about",
     "modElementsPackage": "net.mcreator.extraenchants",
     "lockBaseModFiles": false
   },
-  "mcreatorVersion": 202000432115
+  "mcreatorVersion": 202000546519
 }
