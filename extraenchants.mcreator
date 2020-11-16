@@ -68,6 +68,63 @@
       "locked_code": false,
       "ids": {},
       "registry_name": "curse_of_insomnia"
+    },
+    {
+      "name": "ColdFeet",
+      "type": "enchantment",
+      "sortid": 6,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "cold_feet"
+    },
+    {
+      "name": "WalkableLava",
+      "type": "tag",
+      "sortid": 7,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "walkable_lava"
+    },
+    {
+      "name": "CurseOfVoiding",
+      "type": "enchantment",
+      "sortid": 8,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "curse_of_voiding"
+    },
+    {
+      "name": "EntityAttacked",
+      "type": "procedure",
+      "sortid": 9,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "entity_attacked",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CurseOfWeakness",
+      "type": "enchantment",
+      "sortid": 10,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "curse_of_weakness"
     }
   ],
   "variable_elements": [],
@@ -75,6 +132,9 @@
   "language_map": {
     "en_us": {
       "enchantment.extraenchants.curse_of_insomnia": "Curse Of Insomnia",
+      "enchantment.extraenchants.cold_feet": "Cold Feet",
+      "enchantment.extraenchants.curse_of_voiding": "Curse Of Voiding",
+      "enchantment.extraenchants.curse_of_weakness": "Curse Of Weakness",
       "enchantment.extraenchants.butter_hoe": "Butter Hoe"
     }
   },
@@ -89,7 +149,9 @@
     "requiredMods": [],
     "dependencies": [],
     "dependants": [],
-    "mcreatorDependencies": [],
+    "mcreatorDependencies": [
+      "just_enough_items"
+    ],
     "currentGenerator": "forge-1.15.2",
     "credits": "Created using mod maker MCreator - https://mcreator.net/about",
     "modElementsPackage": "net.mcreator.extraenchants",

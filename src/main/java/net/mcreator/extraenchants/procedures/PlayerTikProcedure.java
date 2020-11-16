@@ -7,9 +7,12 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.DamageSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.BlockItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.monster.PhantomEntity;
 import net.minecraft.entity.SpawnReason;
@@ -19,8 +22,11 @@ import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Entity;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.BlockState;
 
 import net.mcreator.extraenchants.enchantment.CurseOfInsomniaEnchantment;
+import net.mcreator.extraenchants.enchantment.ColdFeetEnchantment;
 import net.mcreator.extraenchants.ExtraenchantsModElements;
 
 import java.util.Map;
@@ -46,6 +52,10 @@ public class PlayerTikProcedure extends ExtraenchantsModElements.ModElement {
 		}
 		Entity entity = (Entity) dependencies.get("entity");
 		IWorld world = (IWorld) dependencies.get("world");
+		ItemStack ColdFeetBlock = ItemStack.EMPTY;
+		double RandomNum = 0;
+		double OX = 0;
+		double OZ = 0;
 		if ((((entity instanceof LivingEntity) ? ((LivingEntity) entity).isSleeping() : false)
 				&& ((EnchantmentHelper.getEnchantmentLevel(CurseOfInsomniaEnchantment.enchantment,
 						/* @ItemStack */((entity instanceof PlayerEntity)
@@ -61,6 +71,41 @@ public class PlayerTikProcedure extends ExtraenchantsModElements.ModElement {
 						((MobEntity) entityToSpawn).onInitialSpawn(world, world.getDifficultyForLocation(new BlockPos(entityToSpawn)),
 								SpawnReason.MOB_SUMMONED, (ILivingEntityData) null, (CompoundNBT) null);
 					world.addEntity(entityToSpawn);
+				}
+			}
+		}
+		if (((EnchantmentHelper.getEnchantmentLevel(ColdFeetEnchantment.enchantment,
+				/* @ItemStack */((entity instanceof PlayerEntity)
+						? ((PlayerEntity) entity).inventory.armorInventory.get((int) 0)
+						: ItemStack.EMPTY)) != 0))) {
+			OZ = (double) (-2);
+			for (int index1 = 0; index1 < (int) (3); index1++) {
+				OZ = (double) ((OZ) + 1);
+				OX = (double) (-2);
+				for (int index2 = 0; index2 < (int) (3); index2++) {
+					OX = (double) ((OX) + 1);
+					if ((BlockTags.getCollection().getOrCreate(new ResourceLocation(("forge:walkable_lava").toLowerCase(java.util.Locale.ENGLISH)))
+							.contains(/* @BlockState */(world.getFluidState(new BlockPos((int) ((entity.getPosX()) + (OX)),
+									(int) ((entity.getPosY()) - 1), (int) ((entity.getPosZ()) + (OZ)))).getBlockState()).getBlock()))) {
+						RandomNum = (double) ((new java.util.Random()).nextInt((int) 2 + 1));
+						if ((0 == (RandomNum))) {
+							ColdFeetBlock = new ItemStack(Blocks.OBSIDIAN, (int) (1));
+						} else if ((1 == (RandomNum))) {
+							ColdFeetBlock = new ItemStack(Blocks.STONE, (int) (1));
+						} else if ((2 == (RandomNum))) {
+							ColdFeetBlock = new ItemStack(Blocks.COBBLESTONE, (int) (1));
+						}
+						world.setBlockState(
+								new BlockPos((int) ((entity.getPosX()) + (OX)), (int) ((entity.getPosY()) - 1), (int) ((entity.getPosZ()) + (OZ))),
+								/* @BlockState */(new Object() {
+									public BlockState toBlock(ItemStack _stk) {
+										if (_stk.getItem() instanceof BlockItem) {
+											return ((BlockItem) _stk.getItem()).getBlock().getDefaultState();
+										}
+										return Blocks.AIR.getDefaultState();
+									}
+								}.toBlock((ColdFeetBlock))), 3);
+					}
 				}
 			}
 		}

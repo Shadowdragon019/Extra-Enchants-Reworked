@@ -18,4 +18,9 @@ authors="Oskar W. Heineck, MCreator"
 
 
 
+[[dependencies.extraenchants]]
+    modId="just_enough_items"
+    mandatory=false
+    ordering="NONE"
+    side="BOTH"
 
